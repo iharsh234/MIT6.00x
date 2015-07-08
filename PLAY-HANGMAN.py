@@ -80,7 +80,6 @@ def hangman(secretWord):
     print "I am thinking of a word that is",len(secretWord),"letters long. "
     print  "-----------"
     n = 8
-    print secretWord
     lettersGuessed = []
     while n>0:
         print "-----------"
@@ -103,7 +102,7 @@ def hangman(secretWord):
             print "Good guess:",getGuessedWord(secretWord, lettersGuessed)
     if n==0:
         print "-----------"
-        return "Sorry, you ran out of guesses. The word was",secretWord
+        print  "Sorry, you ran out of guesses. The word was",secretWord
 
 
 

@@ -1,25 +1,28 @@
 # COMPUTER CHOOSES A WORD
 
 def compChooseWord(hand, wordList, n):
-    """
-    Given a hand and a wordList, find the word that gives 
-    the maximum value score, and return it.
-
-    This word should be calculated by considering all the words
-    in the wordList.
-
-    If no words in the wordList can be made from the hand, return None.
-
-    hand: dictionary (string -> int)
-    wordList: list (string)
-    returns: string or None
-    """
-    # BEGIN PSEUDOCODE (available within ps4b.py)
-    best = {}
-    for word in wordList:
-        if isValidWord(word,hand,wordList) == True:
+       best = {}
+       for word in wordList:
+         if isValidWord(word,hand,wordList) == True:
             bestscore = getWordScore(word,n)
             best[word] = bestscore
-    for name in best.keys():
-      if best[name] == max(best.values()):
-         return name
+       for name in best.keys():
+          if best[name] == max(best.values()):
+              return name
+def compPlayHand(hand, wordList, n):
+    sum = 0
+    while calculateHandlen(hand) > 0:
+      print "Current Hand: ", 
+      displayHand(hand)
+      word = compChooseWord(hand, wordList, n)
+      if word == None:
+           print "Total score:",sum,"points."
+           return None
+      points = getWordScore(word, n)
+      sum = sum + points
+      print "\"" +word + "\" earned",points, "points. Total:",sum,"points"
+      print
+      hand = updateHand(hand, word)
+    print "Total score:",sum,"points."
+    
+
